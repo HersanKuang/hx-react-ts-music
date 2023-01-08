@@ -1,6 +1,6 @@
 {
   "name": "hx-react-ts-music",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
