@@ -101,5 +101,20 @@ export const HeaderRight = styled.div`
     border: 1px solid #666;
     border-radius: 16px;
     margin: 0 16px;
+    color: #ccc;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #ccc;
+    }
+  }
+
+  .login {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `

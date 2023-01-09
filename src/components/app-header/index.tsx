@@ -1,12 +1,15 @@
 import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
+import { NavLink } from 'react-router-dom'
+import { Input } from 'antd'
+import { SearchOutlined } from '@ant-design/icons'
+
 import {
   HeaderLeft,
   HeaderRight,
   HeaderWrapper
 } from '@/components/app-header/style'
 import headerTitles from '@/assets/data/header_titles.json'
-import { NavLink } from 'react-router-dom'
 
 interface IProps {
   children?: ReactNode
@@ -18,7 +21,7 @@ interface IShowItem {
 }
 
 const AppHeader: FC<IProps> = () => {
-  // 组件的展示
+  // 切换导航
   const showItem = (item: IShowItem) => {
     return item.type === 'path' ? (
       <NavLink to={item.link}>
@@ -33,7 +36,7 @@ const AppHeader: FC<IProps> = () => {
   }
   return (
     <HeaderWrapper>
-      <div className="content warp-v1">
+      <div className="content wrap-v1">
         <HeaderLeft>
           <a className="logo sprite_01" href="/">
             网易云音乐
@@ -46,7 +49,15 @@ const AppHeader: FC<IProps> = () => {
             ))}
           </div>
         </HeaderLeft>
-        <HeaderRight>right</HeaderRight>
+        <HeaderRight>
+          <Input
+            className="search"
+            placeholder="音乐/视频/电台/用户"
+            prefix={<SearchOutlined />}
+          />
+          <div className="center">创作者中心</div>
+          <div className="login">登录</div>
+        </HeaderRight>
       </div>
       <div className="divider"></div>
     </HeaderWrapper>
