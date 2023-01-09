@@ -16,6 +16,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.48.0
   antd: ^5.1.3
   axios: ^1.2.2
+  classnames: ^2.3.2
   craco-less: ^2.1.0-alpha.0
   eslint: ^8.31.0
   eslint-config-prettier: ^8.6.0
@@ -44,6 +45,7 @@ dependencies:
   '@types/react-dom': 18.0.10
   antd: 5.1.3_biqbaboplfbrettd7655fr4n2y
   axios: 1.2.2
+  classnames: 2.3.2
   craco-less: 2.1.0-alpha.0_5ial7dl5a2d4aztokzwa5qionq
   normalize.css: 8.0.1
   react: 18.2.0

@@ -9,7 +9,7 @@ export const fetchBannerDataAction = createAsyncThunk('banners', async () => {
 const recommendSlice = createSlice({
   name: 'recommend',
   initialState: {
-    banners: []
+    banners: [] as any[]
   },
   reducers: {},
   extraReducers: (builder) => {
