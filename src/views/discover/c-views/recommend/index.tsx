@@ -1,7 +1,10 @@
 import React, { memo, useEffect } from 'react'
 import type { FC, ReactNode } from 'react'
 import { useAppDispatch } from '@/store'
-import { fetchBannerDataAction } from '@/views/discover/c-views/recommend/store'
+import {
+  fetchBannerDataAction,
+  fetchHotRecommendAction
+} from '@/views/discover/c-views/recommend/store'
 import MainBanner from '@/views/discover/c-views/recommend/c-cpns/main-banner'
 import { RecommendWrapper } from '@/views/discover/c-views/recommend/style'
 import HotRecommend from '@/views/discover/c-views/recommend/c-cpns/hot-recommend'
@@ -15,6 +18,7 @@ const Recommend: FC<IProps> = () => {
   const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(fetchBannerDataAction())
+    dispatch(fetchHotRecommendAction())
   }, [])
 
   return (

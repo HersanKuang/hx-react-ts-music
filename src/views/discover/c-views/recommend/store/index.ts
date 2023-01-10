@@ -1,29 +1,42 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getBanners } from '@/views/discover/c-views/recommend/service'
+import {
+  getBanners,
+  getHotRecommend
+} from '@/views/discover/c-views/recommend/service'
 
 export const fetchBannerDataAction = createAsyncThunk('banners', async () => {
   const res = await getBanners()
   return res.banners
 })
 
+export const fetchHotRecommendAction = createAsyncThunk(
+  'hotRecommend',
+  async (arg, { dispatch }) => {
+    const res = await getHotRecommend(8)
+    dispatch(changeHotRecommendAction(res.result))
+  }
+)
+
 const recommendSlice = createSlice({
   name: 'recommend',
   initialState: {
-    banners: [] as any[]
+    banners: [] as any[],
+    hotRecommends: [] as any[]
   },
-  reducers: {},
+  reducers: {
+    // changeBannersAction(state, { payload }) {}
+    changeHotRecommendAction(state, { payload }) {
+      state.hotRecommends = payload
+    }
+  },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchBannerDataAction.pending, () => {
-        console.log('pending')
-      })
+      /** pending fulfilled rejected */
       .addCase(fetchBannerDataAction.fulfilled, (state, { payload }) => {
         state.banners = payload
-      })
-      .addCase(fetchBannerDataAction.rejected, () => {
-        console.log('rejected')
       })
   }
 })
 
+export const { changeHotRecommendAction } = recommendSlice.actions
 export default recommendSlice.reducer

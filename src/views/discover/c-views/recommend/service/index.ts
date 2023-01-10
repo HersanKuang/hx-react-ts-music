@@ -5,3 +5,12 @@ export function getBanners() {
     url: '/banner'
   })
 }
+
+export function getHotRecommend(limit = 30) {
+  return hxRequest.get({
+    url: '/personalized',
+    params: {
+      limit
+    }
+  })
+}
