@@ -3,6 +3,8 @@ import type { FC, ReactNode, ElementRef } from 'react'
 import { Carousel } from 'antd'
 import { AlbumWrapper } from '@/views/discover/c-views/recommend/c-cpns/new-album/style'
 import AreaHeader from '@/components/area-header'
+import { useAppSelector } from '@/store'
+import NewAlbumItem from '@/components/new-album-item'
 
 interface IProps {
   children?: ReactNode
@@ -11,6 +13,11 @@ interface IProps {
 const NewAlbum: FC<IProps> = () => {
   /** 定义内部数据 */
   const bannerRef = useRef<ElementRef<typeof Carousel>>(null)
+
+  /** redux中获取数据 */
+  const { newAlbum } = useAppSelector((state) => ({
+    newAlbum: state.recommend.newAlbums
+  }))
 
   /** 事件处理函数 */
   const handlePrevClick = () => {
@@ -30,8 +37,14 @@ const NewAlbum: FC<IProps> = () => {
         ></button>
         <div className="banner">
           <Carousel ref={bannerRef} dots={false} speed={1500}>
-            {[1, 2].map((item) => (
-              <h1 key={item}>{item}</h1>
+            {[0, 1].map((item) => (
+              <div key={item}>
+                <div className="album-list">
+                  {newAlbum.slice(item * 5, (item + 1) * 5).map((album) => (
+                    <NewAlbumItem key={album.id} itemData={album} />
+                  ))}
+                </div>
+              </div>
             ))}
           </Carousel>
         </div>

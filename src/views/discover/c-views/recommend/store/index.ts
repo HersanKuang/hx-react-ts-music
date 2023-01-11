@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import {
   getBanners,
-  getHotRecommend
+  getHotRecommend,
+  getNewAlbum
 } from '@/views/discover/c-views/recommend/service'
 
 export const fetchBannerDataAction = createAsyncThunk('banners', async () => {
@@ -17,12 +18,25 @@ export const fetchHotRecommendAction = createAsyncThunk(
   }
 )
 
+export const fetchNewAlbumAction = createAsyncThunk('newAlbum', async () => {
+  const res = await getNewAlbum()
+  return res.albums
+})
+
+type InitialState = {
+  banners: any[]
+  hotRecommends: any[]
+  newAlbums: any[]
+}
+const initialState: InitialState = {
+  banners: [],
+  hotRecommends: [],
+  newAlbums: []
+}
+
 const recommendSlice = createSlice({
   name: 'recommend',
-  initialState: {
-    banners: [] as any[],
-    hotRecommends: [] as any[]
-  },
+  initialState,
   reducers: {
     // changeBannersAction(state, { payload }) {}
     changeHotRecommendAction(state, { payload }) {
@@ -32,9 +46,18 @@ const recommendSlice = createSlice({
   extraReducers: (builder) => {
     builder
       /** pending fulfilled rejected */
-      .addCase(fetchBannerDataAction.fulfilled, (state, { payload }) => {
-        state.banners = payload
-      })
+      .addCase(
+        fetchBannerDataAction.fulfilled,
+        (state: InitialState, { payload }) => {
+          state.banners = payload
+        }
+      )
+      .addCase(
+        fetchNewAlbumAction.fulfilled,
+        (state: InitialState, { payload }) => {
+          state.newAlbums = payload
+        }
+      )
   }
 })
 

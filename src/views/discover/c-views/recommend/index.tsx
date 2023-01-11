@@ -3,7 +3,8 @@ import type { FC, ReactNode } from 'react'
 import { useAppDispatch } from '@/store'
 import {
   fetchBannerDataAction,
-  fetchHotRecommendAction
+  fetchHotRecommendAction,
+  fetchNewAlbumAction
 } from '@/views/discover/c-views/recommend/store'
 import MainBanner from '@/views/discover/c-views/recommend/c-cpns/main-banner'
 import { RecommendWrapper } from '@/views/discover/c-views/recommend/style'
@@ -20,6 +21,7 @@ const Recommend: FC<IProps> = () => {
   useEffect(() => {
     dispatch(fetchBannerDataAction())
     dispatch(fetchHotRecommendAction())
+    dispatch(fetchNewAlbumAction())
   }, [])
 
   return (
