@@ -15,6 +15,7 @@ const NewAlbumItem: FC<IProps> = (props) => {
       <div className="top">
         <img src={getImageSize(itemData.picUrl, 100)} alt="" />
         <a href="" className="sprite_cover cover"></a>
+        <a href="" className="sprite_icon icon-play"></a>
       </div>
       <div className="bottom">
         <div className="name">{itemData.name}</div>

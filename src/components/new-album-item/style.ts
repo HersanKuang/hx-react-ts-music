@@ -22,6 +22,20 @@ export const AlbumItemWrapper = styled.div`
       background-position: 0 -570px;
       text-indent: -9999px;
     }
+
+    .icon-play {
+      display: none;
+      position: absolute;
+      right: 24px;
+      bottom: 5px;
+      width: 22px;
+      height: 22px;
+    }
+
+    &:hover .icon-play {
+      display: block;
+      background-position: 0 -85px;
+    }
   }
 
   .bottom {
@@ -30,12 +44,22 @@ export const AlbumItemWrapper = styled.div`
     width: 100px;
     .name {
       color: #000;
+      cursor: pointer;
       ${(props) => props.theme.mixin.textNowrap}
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     .artist {
       color: #666;
+      cursor: pointer;
       ${(props) => props.theme.mixin.textNowrap}
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 `

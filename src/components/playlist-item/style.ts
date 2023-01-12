@@ -52,9 +52,14 @@ export const PlaylistWrapper = styled.div`
   }
 
   .bottom {
+    margin-top: 5px;
     font-size: 14px;
     color: #000;
-    margin-top: 5px;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .source {
