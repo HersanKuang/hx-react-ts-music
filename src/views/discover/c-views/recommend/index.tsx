@@ -4,12 +4,14 @@ import { useAppDispatch } from '@/store'
 import {
   fetchBannerDataAction,
   fetchHotRecommendAction,
-  fetchNewAlbumAction
+  fetchNewAlbumAction,
+  fetchRankingDataAction
 } from '@/views/discover/c-views/recommend/store'
 import MainBanner from '@/views/discover/c-views/recommend/c-cpns/main-banner'
 import { RecommendWrapper } from '@/views/discover/c-views/recommend/style'
 import HotRecommend from '@/views/discover/c-views/recommend/c-cpns/hot-recommend'
 import NewAlbum from '@/views/discover/c-views/recommend/c-cpns/new-album'
+import TopRanking from '@/views/discover/c-views/recommend/c-cpns/top-ranking'
 
 interface IProps {
   children?: ReactNode
@@ -22,6 +24,7 @@ const Recommend: FC<IProps> = () => {
     dispatch(fetchBannerDataAction())
     dispatch(fetchHotRecommendAction())
     dispatch(fetchNewAlbumAction())
+    dispatch(fetchRankingDataAction())
   }, [])
 
   return (
@@ -31,6 +34,7 @@ const Recommend: FC<IProps> = () => {
         <div className="left">
           <HotRecommend />
           <NewAlbum />
+          <TopRanking />
         </div>
         <div className="right">right</div>
       </div>

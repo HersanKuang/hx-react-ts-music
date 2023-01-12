@@ -36,7 +36,6 @@ export const AlbumWrapper = styled.div`
     }
 
     .banner {
-      width: 100px;
       overflow: hidden;
       flex: 1;
 
