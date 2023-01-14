@@ -1,28 +1,29 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import {
+  getArtistList,
   getBanners,
   getHotRecommend,
   getNewAlbum,
   getPlaylistDetail
 } from '@/views/discover/c-views/recommend/service'
 
-export const fetchBannerDataAction = createAsyncThunk('banners', async () => {
-  const res = await getBanners()
-  return res.banners
-})
-
-export const fetchHotRecommendAction = createAsyncThunk(
-  'hotRecommend',
-  async (arg, { dispatch }) => {
-    const res = await getHotRecommend(8)
-    dispatch(changeHotRecommendAction(res.result))
+export const fetchRecommendDataAction = createAsyncThunk(
+  'fetchData',
+  (arg, { dispatch }) => {
+    getBanners().then((res) => {
+      dispatch(changeBannersAction(res.banners))
+    })
+    getHotRecommend(8).then((res) => {
+      dispatch(changeHotRecommendAction(res.result))
+    })
+    getNewAlbum().then((res) => {
+      dispatch(changeNewAlbumsAction(res.albums))
+    })
+    getArtistList().then((res) => {
+      dispatch(changeSettleSingersAction(res.artists))
+    })
   }
 )
-
-export const fetchNewAlbumAction = createAsyncThunk('newAlbum', async () => {
-  const res = await getNewAlbum()
-  return res.albums
-})
 
 // 飙升榜，新歌榜，原创榜的id
 const rankingIds = [19723756, 3779629, 2884035]
@@ -45,38 +46,36 @@ type InitialState = {
   hotRecommends: any[]
   newAlbums: any[]
   rankings: any[]
+  settleSingers: any[]
 }
 const initialState: InitialState = {
   banners: [],
   hotRecommends: [],
   newAlbums: [],
-  rankings: []
+  rankings: [],
+  settleSingers: []
 }
 
 const recommendSlice = createSlice({
   name: 'recommend',
   initialState,
   reducers: {
-    // changeBannersAction(state, { payload }) {}
+    changeBannersAction(state, { payload }) {
+      state.banners = payload
+    },
     changeHotRecommendAction(state, { payload }) {
       state.hotRecommends = payload
+    },
+    changeNewAlbumsAction(state, { payload }) {
+      state.newAlbums = payload
+    },
+    changeSettleSingersAction(state, { payload }) {
+      state.settleSingers = payload
     }
   },
   extraReducers: (builder) => {
     builder
       /** pending fulfilled rejected */
-      .addCase(
-        fetchBannerDataAction.fulfilled,
-        (state: InitialState, { payload }) => {
-          state.banners = payload
-        }
-      )
-      .addCase(
-        fetchNewAlbumAction.fulfilled,
-        (state: InitialState, { payload }) => {
-          state.newAlbums = payload
-        }
-      )
       .addCase(
         fetchRankingDataAction.fulfilled,
         (state: InitialState, { payload }) => {
@@ -86,5 +85,10 @@ const recommendSlice = createSlice({
   }
 })
 
-export const { changeHotRecommendAction } = recommendSlice.actions
+export const {
+  changeHotRecommendAction,
+  changeBannersAction,
+  changeNewAlbumsAction,
+  changeSettleSingersAction
+} = recommendSlice.actions
 export default recommendSlice.reducer

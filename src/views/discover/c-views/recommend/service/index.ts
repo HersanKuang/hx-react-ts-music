@@ -29,3 +29,12 @@ export function getPlaylistDetail(id: number) {
     }
   })
 }
+
+export function getArtistList(limit = 30) {
+  return hxRequest.get({
+    url: '/artist/list',
+    params: {
+      limit
+    }
+  })
+}

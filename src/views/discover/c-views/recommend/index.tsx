@@ -2,16 +2,17 @@ import React, { memo, useEffect } from 'react'
 import type { FC, ReactNode } from 'react'
 import { useAppDispatch } from '@/store'
 import {
-  fetchBannerDataAction,
-  fetchHotRecommendAction,
-  fetchNewAlbumAction,
-  fetchRankingDataAction
+  fetchRankingDataAction,
+  fetchRecommendDataAction
 } from '@/views/discover/c-views/recommend/store'
 import MainBanner from '@/views/discover/c-views/recommend/c-cpns/main-banner'
 import { RecommendWrapper } from '@/views/discover/c-views/recommend/style'
 import HotRecommend from '@/views/discover/c-views/recommend/c-cpns/hot-recommend'
 import NewAlbum from '@/views/discover/c-views/recommend/c-cpns/new-album'
 import TopRanking from '@/views/discover/c-views/recommend/c-cpns/top-ranking'
+import UserLogin from '@/views/discover/c-views/recommend/c-cpns/user-login'
+import SettleSinger from '@/views/discover/c-views/recommend/c-cpns/settle-singer'
+import HotAnchor from '@/views/discover/c-views/recommend/c-cpns/hot-anchor'
 
 interface IProps {
   children?: ReactNode
@@ -21,9 +22,7 @@ const Recommend: FC<IProps> = () => {
   /** 获取banner数据 */
   const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(fetchBannerDataAction())
-    dispatch(fetchHotRecommendAction())
-    dispatch(fetchNewAlbumAction())
+    dispatch(fetchRecommendDataAction())
     dispatch(fetchRankingDataAction())
   }, [])
 
@@ -36,7 +35,11 @@ const Recommend: FC<IProps> = () => {
           <NewAlbum />
           <TopRanking />
         </div>
-        <div className="right">right</div>
+        <div className="right">
+          <UserLogin />
+          <SettleSinger />
+          <HotAnchor />
+        </div>
       </div>
     </RecommendWrapper>
   )

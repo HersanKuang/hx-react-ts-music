@@ -8,7 +8,7 @@ import {
   HeaderLeft,
   HeaderRight,
   HeaderWrapper
-} from '@/components/app-header/style'
+} from '@/components/app-header-v1/style'
 import headerTitles from '@/assets/data/header_titles.json'
 
 interface IProps {
