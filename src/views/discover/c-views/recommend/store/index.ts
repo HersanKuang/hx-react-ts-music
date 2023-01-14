@@ -19,7 +19,7 @@ export const fetchRecommendDataAction = createAsyncThunk(
     getNewAlbum().then((res) => {
       dispatch(changeNewAlbumsAction(res.albums))
     })
-    getArtistList().then((res) => {
+    getArtistList(5).then((res) => {
       dispatch(changeSettleSingersAction(res.artists))
     })
   }
