@@ -35,6 +35,10 @@ export const SingerWrapper = styled.div`
           font-size: 14px;
           font-weight: 700;
           color: #000;
+
+          &:hover {
+            text-decoration: underline;
+          }
         }
 
         .alias {
@@ -43,6 +47,10 @@ export const SingerWrapper = styled.div`
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
+
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
     }
