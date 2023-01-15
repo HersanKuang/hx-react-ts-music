@@ -21,10 +21,10 @@ export const NavWrapper = styled.div`
         margin: 7px 17px 0;
         color: #fff;
         font-size: 12px;
+        text-decoration: none;
 
         &:hover,
         &.active {
-          text-decoration: none;
           background-color: #9b0909;
           border-radius: 20px;
         }
