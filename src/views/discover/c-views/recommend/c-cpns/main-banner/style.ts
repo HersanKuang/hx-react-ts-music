@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 interface BannerProps {
-  bgImage: string
+  bgImage?: string
 }
 export const BannerWrapper = styled.div<BannerProps>`
   background: url(${(props) => props.bgImage}) center center/6000px;
@@ -16,13 +16,30 @@ export const BannerWrapper = styled.div<BannerProps>`
 export const BannerLeft = styled.div`
   position: relative;
   width: 730px;
+  z-index: 10;
 
-  .banner-item {
-    overflow: hidden;
-    height: 270px;
-    .image {
-      width: 100%;
+  .banner-list {
+    position: relative;
+    .banner-item {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 270px;
+      overflow: hidden;
+      cursor: pointer;
+      .image {
+        width: 100%;
+      }
     }
+  }
+
+  .fade-exit {
+    opacity: 1;
+  }
+
+  .fade-exit-active {
+    opacity: 0.2;
+    transition: opacity 1s ease-in-out;
   }
 
   .dots {
@@ -60,6 +77,7 @@ export const BannerRight = styled.a.attrs({
   width: 254px;
   height: 270px;
   background: url(${require('@/assets/img/download.png')});
+  z-index: 10;
 `
 
 export const BannerControl = styled.div`
