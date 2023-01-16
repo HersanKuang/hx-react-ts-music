@@ -18,7 +18,7 @@ export const PlayerBarWrapper = styled.div`
     align-items: center;
     justify-content: space-between;
     height: 47px;
-    padding-left: 67px;
+    padding-left: 52px;
     transform: translateX(-50%);
   }
 `
@@ -158,7 +158,7 @@ export const BarOperator = styled.div<IBarOperator>`
   .btn {
     width: 25px;
     height: 25px;
-    margin-right: 2px;
+    cursor: pointer;
   }
 
   .left {
