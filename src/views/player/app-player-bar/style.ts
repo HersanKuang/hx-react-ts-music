@@ -4,21 +4,22 @@ export const PlayerBarWrapper = styled.div`
   position: fixed;
   z-index: 99;
   left: 0;
-  right: 0;
+  right: 67px;
   bottom: 0;
   height: 52px;
   background-position: 0 0;
   background-repeat: repeat;
 
   .content {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 0;
     height: 47px;
+    padding-left: 67px;
+    transform: translateX(-50%);
   }
 `
 interface IBarControl {
@@ -60,6 +61,8 @@ export const BarPlayerInfo = styled.div`
   align-items: center;
 
   .image {
+    position: relative;
+    top: 2px;
     width: 34px;
     height: 34px;
     border-radius: 5px;
@@ -73,7 +76,7 @@ export const BarPlayerInfo = styled.div`
     .song {
       color: #e1e1e1;
       position: relative;
-      top: 8px;
+      top: 10px;
       left: 8px;
 
       .singer-name {
@@ -99,7 +102,7 @@ export const BarPlayerInfo = styled.div`
 
       .ant-slider {
         position: relative;
-        top: -3px;
+        top: 0;
         width: 466px;
         margin-right: 16px;
         cursor: default;
@@ -118,7 +121,7 @@ export const BarPlayerInfo = styled.div`
           width: 22px;
           height: 24px;
           border: none;
-          margin-top: -7px;
+          margin-top: -5px;
           background: url(${require('@/assets/img/sprite_icon.png')}) 0 -250px;
 
           &::before,
@@ -129,6 +132,8 @@ export const BarPlayerInfo = styled.div`
       }
 
       .time {
+        position: relative;
+        top: 3px;
         .current {
           color: #e1e1e1;
         }
@@ -148,11 +153,12 @@ export const BarOperator = styled.div<IBarOperator>`
   align-items: center;
   position: relative;
   left: 14px;
-  top: 3px;
+  top: 0;
 
   .btn {
     width: 25px;
     height: 25px;
+    margin-right: 2px;
   }
 
   .left {
@@ -204,5 +210,46 @@ export const BarOperator = styled.div<IBarOperator>`
       width: 59px;
       background-position: -42px -68px;
     }
+  }
+`
+
+export const HandlerWrapper = styled.div`
+  position: fixed;
+  z-index: 999;
+  right: 0;
+  bottom: 0;
+  width: 67px;
+  height: 52px;
+
+  .left {
+    position: absolute;
+    top: -14px;
+    right: 15px;
+    width: 52px;
+    height: 67px;
+    background-position: 0 -380px;
+
+    .btn {
+      display: block;
+      width: 18px;
+      height: 18px;
+      margin: 6px 0 0 17px;
+      cursor: pointer;
+      background-position: -100px -380px;
+
+      &:hover {
+        background-position: -100px -400px;
+      }
+    }
+  }
+
+  .right {
+    position: absolute;
+    top: -1px;
+    right: 0;
+    width: 15px;
+    height: 54px;
+    background-position: -52px -393px;
+    pointer-events: none;
   }
 `

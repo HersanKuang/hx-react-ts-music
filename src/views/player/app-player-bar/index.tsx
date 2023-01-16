@@ -4,6 +4,7 @@ import {
   BarControl,
   BarOperator,
   BarPlayerInfo,
+  HandlerWrapper,
   PlayerBarWrapper
 } from '@/views/player/app-player-bar/style'
 import { NavLink } from 'react-router-dom'
@@ -58,6 +59,12 @@ const AppPlayerBar: FC<IProps> = () => {
           </div>
         </BarOperator>
       </div>
+      <HandlerWrapper>
+        <div className="sprite_playbar left">
+          <a className="sprite_playbar btn"></a>
+        </div>
+        <div className="sprite_playbar right"></div>
+      </HandlerWrapper>
     </PlayerBarWrapper>
   )
 }
